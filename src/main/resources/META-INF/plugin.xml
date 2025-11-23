@@ -1,23 +1,25 @@
 <idea-plugin>
-    <id>com.github.airsaid.androidlocalize</id>
-    <name>AndroidLocalize</name>
-    <vendor email="airsaid1024@gmail.com" url="https://github.com/Airsaid/AndroidLocalizePlugin">Airsaid</vendor>
+    <id>com.ntm.androidlocalizeplus</id>
+    <name>My Android Localize</name>
+    <vendor email="franximai2016@gmail.com">NTMSoftware</vendor>
+    <product-descriptor code="PANDROIDLOCALIZ" release-date="20251116" release-version="55"/>
+    <version>5.5.0</version>
 
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <postStartupActivity implementation="com.airsaid.localization.license.LicenseStartupActivity"/>
+        <postStartupActivity implementation="com.ntm.localization.license.LicenseStartupActivity"/>
         <applicationConfigurable parentId="tools"
-                                 instance="com.airsaid.localization.config.SettingsConfigurable"
-                                 id="com.airsaid.localization.config.SettingsConfigurable"/>
+                                 instance="com.ntm.localization.config.SettingsConfigurable"
+                                 id="com.ntm.localization.config.SettingsConfigurable"/>
 
         <notificationGroup id="Android Localize Plugin"
                            displayType="BALLOON"/>
     </extensions>
 
     <actions>
-        <action id="com.airsaid.localization.action.TranslateAction"
-                class="com.airsaid.localization.action.TranslateAction"
+        <action id="com.ntm.localization.action.TranslateAction"
+                class="com.ntm.localization.action.TranslateAction"
                 text="Translate to Other Languages"
                 icon="PluginIcons.TRANSLATE_ACTION_ICON"
                 description="Translate strings to other languages.">
