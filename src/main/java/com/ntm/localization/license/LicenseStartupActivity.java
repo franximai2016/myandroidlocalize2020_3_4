@@ -70,6 +70,7 @@ public class LicenseStartupActivity implements StartupActivity {
                     CheckLicense.requestLicense(
                             "Please activate or renew your My Android Localize license."
                     );
+                    log.warn("Open CheckLicense.requestLicense");
                 } catch (Exception e) {
                     log.error("Failed to open registration dialog", e);
                 }

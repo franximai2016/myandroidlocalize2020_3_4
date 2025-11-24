@@ -2,22 +2,28 @@
     <id>com.ntm.androidlocalizeplus</id>
     <name>My Android Localize</name>
     <vendor email="franximai2016@gmail.com">NTMSoftware</vendor>
-    <product-descriptor code="PANDROIDLOCALIZ" release-date="20251116" release-version="55"/>
-    <version>5.5.0</version>
+    <product-descriptor code="PANDROIDLOCALIZ" release-date="20251124" release-version="56"/>
+    <version>5.6.0</version>
 
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
+        <!-- Startup activity để check license khi khởi động -->
         <postStartupActivity implementation="com.ntm.localization.license.LicenseStartupActivity"/>
+
+        <!-- Settings configurable -->
         <applicationConfigurable parentId="tools"
                                  instance="com.ntm.localization.config.SettingsConfigurable"
                                  id="com.ntm.localization.config.SettingsConfigurable"/>
 
+        <!-- Notification group cho plugin -->
         <notificationGroup id="Android Localize Plugin"
-                           displayType="BALLOON"/>
+                           displayType="BALLOON"
+                           isLogByDefault="true"/>
     </extensions>
 
     <actions>
+        <!-- Action translation với license check được tích hợp -->
         <action id="com.ntm.localization.action.TranslateAction"
                 class="com.ntm.localization.action.TranslateAction"
                 text="Translate to Other Languages"

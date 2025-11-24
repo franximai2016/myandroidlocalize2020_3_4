@@ -24,7 +24,7 @@ package com.ntm.localization.constant;
  */
 public interface Constants {
 
-  String PLUGIN_NAME = "AndroidLocalize";
+  String PLUGIN_NAME = "MyAndroidLocalize";
 
   String PLUGIN_ID = "com.github.airsaid.androidlocalize";
 

@@ -7,6 +7,7 @@ import com.intellij.openapi.actionSystem.Presentation;
 import com.intellij.openapi.actionSystem.ex.ActionUtil;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
+import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.ui.LicensingFacade;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -98,6 +99,8 @@ public class CheckLicense {
     private static final long HOUR = 60 * MINUTE;
     private static final long TIMESTAMP_VALIDITY_PERIOD_MS = 1 * HOUR;  // configure period that suits your needs better
 
+    private static final Logger log = Logger.getInstance(CheckLicense.class);
+
 
     /**
      * @return TRUE if licensed, FALSE otherwise.
@@ -130,10 +133,12 @@ public class CheckLicense {
 
     public static void requestLicense(final String message) {
         // ensure the dialog is appeared from UI thread and in a non-modal context
+        log.warn("Open requestLicense");
         ApplicationManager.getApplication().invokeLater(() -> showRegisterDialog(PRODUCT_CODE, message), ModalityState.NON_MODAL);
     }
 
     private static void showRegisterDialog(final String productCode, final String message) {
+        log.warn("Open showRegisterDialog");
         final com.intellij.openapi.actionSystem.ActionManager actionManager = com.intellij.openapi.actionSystem.ActionManager.getInstance();
         // first, assume we are running inside the opensource version
         AnAction registerAction = actionManager.getAction("RegisterPlugins");
@@ -142,7 +147,8 @@ public class CheckLicense {
             registerAction = actionManager.getAction("Register");
         }
         if (registerAction != null) {
-            //registerAction.actionPerformed(AnActionEvent.createFromDataContext("", new Presentation(), asDataContext(productCode, message)));
+            registerAction.actionPerformed(AnActionEvent.createFromDataContext("", new Presentation(), asDataContext(productCode, message)));
+            /*
             DataContext dataContext = asDataContext(productCode, message);
             ActionUtil.invokeAction(
                     registerAction,
@@ -151,6 +157,8 @@ public class CheckLicense {
                     null,
                     null
             );
+
+             */
         }
     }
 
