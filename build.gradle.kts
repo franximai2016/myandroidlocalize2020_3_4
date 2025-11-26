@@ -31,6 +31,12 @@ intellij {
   plugins.set(properties("platformPlugins").split(',').map(String::trim).filter(String::isNotEmpty))
 }
 
+tasks {
+  buildSearchableOptions {
+    enabled = false
+  }
+}
+
 // Configure Gradle Changelog Plugin - read more: https://github.com/JetBrains/gradle-changelog-plugin
 changelog {
   groups.empty()
